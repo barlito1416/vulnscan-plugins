@@ -49,6 +49,28 @@ After editing, regenerate the HTTP manifest:
 python3 tools/gen_manifest.py
 ```
 
+## Bulk-generate from NVD
+`tools/gen_from_nvd.py` builds plugins **in bulk from the NVD 2.0 API** — for
+every fingerprintable product it reads each CVE's affected version ranges and
+emits one plugin per range into `plugins/nvd/`. The result is an **offline**
+catalog: once generated, scans need no NVD access and run without per-request
+rate limits.
+
+```bash
+export NVD_API_KEY=...                 # optional, but much faster
+python3 tools/gen_from_nvd.py                          # HIGH+ severity, all products
+python3 tools/gen_from_nvd.py --min-severity CRITICAL --max-per-product 40
+python3 tools/gen_from_nvd.py --products nginx,openssh # just these
+python3 tools/gen_from_nvd.py --kev-only               # only CISA KEV CVEs
+python3 tools/gen_manifest.py                          # then refresh the manifest
+```
+
+Generated plugins match by CPE substring + version bounds, so they line up with
+how vulnscan fingerprints a service. Rules with no usable version bound are
+skipped (they would match every version). Add a product by adding its
+`vendor:product` to the `PRODUCTS` map in the tool and a fingerprint for it in
+vulnscan.
+
 ## Scope
 These are **detection** rules for known, versioned vulnerabilities — a
 prioritized worklist, not proof. Verify findings before acting, and only scan

@@ -13,11 +13,13 @@ import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 entries = []
-for path in sorted(glob.glob(os.path.join(ROOT, "plugins", "*.json"))):
+for path in sorted(glob.glob(os.path.join(ROOT, "plugins", "**", "*.json"),
+                            recursive=True)):
     with open(path, "rb") as f:
         data = f.read()
+    rel = os.path.relpath(path, ROOT).replace(os.sep, "/")
     entries.append({
-        "file": "plugins/" + os.path.basename(path),
+        "file": rel,
         "sha256": hashlib.sha256(data).hexdigest(),
     })
 
