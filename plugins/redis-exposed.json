@@ -1,0 +1,14 @@
+{
+  "id": "redis-exposed-service",
+  "name": "Redis Server Exposed on the Network",
+  "severity": "MEDIUM",
+  "references": [
+    "https://redis.io/docs/management/security/"
+  ],
+  "description": "A Redis server is reachable over the network. Redis has no authentication by default; if it is not bound to localhost or protected by a strong 'requirepass', anyone who can reach the port can read/write all data and may achieve code execution.",
+  "remediation": "Bind Redis to 127.0.0.1 or a private interface, enable 'requirepass' with a strong secret, enable protected-mode, and firewall the port.",
+  "match": {
+    "service": "redis",
+    "banner_regex": "redis_version|-NOAUTH|-DENIED|\\+PONG"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "proftpd-cve-2015-3306",
+  "name": "ProFTPD 1.3.5 - mod_copy Remote Command Execution",
+  "severity": "CRITICAL",
+  "cve": ["CVE-2015-3306"],
+  "references": [
+    "https://nvd.nist.gov/vuln/detail/CVE-2015-3306"
+  ],
+  "description": "The mod_copy module in ProFTPD 1.3.5 allows unauthenticated attackers to use the SITE CPFR and SITE CPTO commands to copy files anywhere on the server, which can lead to remote code execution.",
+  "remediation": "Upgrade ProFTPD to 1.3.5a or later, or disable mod_copy.",
+  "match": {
+    "service": "ftp",
+    "product_regex": "proftpd",
+    "version": {"eq": "1.3.5"}
+  }
+}

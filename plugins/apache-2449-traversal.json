@@ -1,0 +1,16 @@
+{
+  "id": "apache-cve-2021-41773",
+  "name": "Apache HTTP Server 2.4.49 - Path Traversal and RCE",
+  "severity": "CRITICAL",
+  "cve": ["CVE-2021-41773"],
+  "references": [
+    "https://httpd.apache.org/security/vulnerabilities_24.html",
+    "https://nvd.nist.gov/vuln/detail/CVE-2021-41773"
+  ],
+  "description": "Apache HTTP Server 2.4.49 is vulnerable to a path traversal flaw that maps URLs to files outside the configured document root. Where mod_cgi is enabled it can lead to remote code execution. Actively exploited in the wild.",
+  "remediation": "Upgrade to Apache HTTP Server 2.4.51 or later (2.4.50 is an incomplete fix). Ensure 'require all denied' is set for filesystem locations.",
+  "match": {
+    "product_regex": "apache",
+    "version": {"eq": "2.4.49"}
+  }
+}

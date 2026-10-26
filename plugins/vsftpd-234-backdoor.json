@@ -1,0 +1,16 @@
+{
+  "id": "vsftpd-2.3.4-backdoor",
+  "name": "vsftpd 2.3.4 - Backdoor Command Execution",
+  "severity": "CRITICAL",
+  "cve": ["CVE-2011-2523"],
+  "references": [
+    "https://nvd.nist.gov/vuln/detail/CVE-2011-2523"
+  ],
+  "description": "vsftpd 2.3.4 downloaded from the master site between 2011-06-30 and 2011-07-01 contains a backdoor: a username ending in ':)' opens a root shell on TCP 6200.",
+  "remediation": "Replace the binary with a clean vsftpd build from your distribution's packages and verify its checksum.",
+  "match": {
+    "service": "ftp",
+    "product_regex": "vsftpd",
+    "version": {"eq": "2.3.4"}
+  }
+}

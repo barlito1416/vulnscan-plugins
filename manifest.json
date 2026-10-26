@@ -1,0 +1,129 @@
+{
+  "name": "vulnscan-plugins",
+  "plugins": [
+    {
+      "file": "plugins/apache-2449-traversal.json",
+      "sha256": "5300d36aee503e11d1724681321adbfbfe81fbf5286580a87844a716ee79f2b4"
+    },
+    {
+      "file": "plugins/apache-2450-traversal.json",
+      "sha256": "b8c8e14df6dca2788c8f1f54d29e7277818716face0b9b4eeae3542bf97bb9b3"
+    },
+    {
+      "file": "plugins/apache-cve-2017-9798-optionsbleed.json",
+      "sha256": "5bf6789a6c49a572e99193190fd2d586c1b11f4519cc6b223641aebcaee6c56f"
+    },
+    {
+      "file": "plugins/apache-cve-2019-0211-privesc.json",
+      "sha256": "af9c2584e94fe90a46076d1f2359f970311d0df0e4318900e326e9e08c46bbb5"
+    },
+    {
+      "file": "plugins/apache-cve-2021-40438-ssrf.json",
+      "sha256": "37c83bb8e7400cf6daaf4c9cd1128ebc61dbeffe8b5b7b2acf6b7be244eab2ea"
+    },
+    {
+      "file": "plugins/apache-cve-2021-44790-modlua.json",
+      "sha256": "7158bdfa3b185306f47d6577c01b52a5faf3d96cc10584d30da3e7ab473ed6aa"
+    },
+    {
+      "file": "plugins/apache-cve-2023-25690-smuggling.json",
+      "sha256": "c593e1b0bdc9551c941737b1a504316be0755c96b34bdf5b4fd60727aa0655ff"
+    },
+    {
+      "file": "plugins/drupal-cve-2018-7600-7.json",
+      "sha256": "be5fcfd2b4aed44e88c2054528001d2abbad848ad68d9498865f16ec5e79273d"
+    },
+    {
+      "file": "plugins/drupal-cve-2018-7600-8.json",
+      "sha256": "88022a120aac77b60676e5aa03994253966a2453d8336528406e4b70f4b3856b"
+    },
+    {
+      "file": "plugins/elasticsearch-cve-2015-1427-groovy.json",
+      "sha256": "0ca7b02cd31380b5d6f5228a9a56f021703a8d80c8211d5f9bb2dfc5e9383ed3"
+    },
+    {
+      "file": "plugins/exim-cve-2019-10149-deaddrop.json",
+      "sha256": "ae7d37e10e9d0e23c791b1cb90df2f1b5b47ac2fc8997203fcb8e1c33b3238c4"
+    },
+    {
+      "file": "plugins/iis-cve-2017-7269-webdav.json",
+      "sha256": "2e964ef58c3559887575e52f54ff0326378491257959f07d5256d0812d721b84"
+    },
+    {
+      "file": "plugins/nginx-cve-2019-20372-smuggling.json",
+      "sha256": "7c23b1452f4a6ea2bd6aa44ca6531cf8365e28d487e9ec05057f62f38de05bae"
+    },
+    {
+      "file": "plugins/nginx-cve-2021-23017-resolver.json",
+      "sha256": "872b67ff1e27c104cac8f0c57795fd9f6cfadcabf0125ff0f2b9c8d130f71bcf"
+    },
+    {
+      "file": "plugins/openssh-cve-2024-6387-regresshion.json",
+      "sha256": "274385e121c7d0ef6327a21ef39e44d139a13ca3d065ee080a5dc1e0f98cc29e"
+    },
+    {
+      "file": "plugins/openssh-user-enum.json",
+      "sha256": "30e59638fe41d878a32b5b4cb742251a2be26c6fe4fe8078c87abcec56af89e4"
+    },
+    {
+      "file": "plugins/openssl-cve-2014-0224-ccs.json",
+      "sha256": "ac1e0860e46033a803984d6a7c7cd8399d51e2e11ca0d59eae7e88c31e71d457"
+    },
+    {
+      "file": "plugins/openssl-cve-2022-3786-spooky.json",
+      "sha256": "4ff6d706ff612c8b7033913480320b9fbd5b979561f340fd20d04da0f971cf2e"
+    },
+    {
+      "file": "plugins/openssl-heartbleed.json",
+      "sha256": "804901743be584c1e2dd4fce6fa7b32addd6001beb9004ae3fb849041d0587e2"
+    },
+    {
+      "file": "plugins/proftpd-cve-2019-12815-modcopy.json",
+      "sha256": "19bdbb11502fab12cc680f36f71a68695ff8b664c44a4c30d304d86cfdd4f444"
+    },
+    {
+      "file": "plugins/proftpd-modcopy.json",
+      "sha256": "dcd0bda00129373d08b84d3bffea2d3572fe1ed08eb39719a368a73224005689"
+    },
+    {
+      "file": "plugins/redis-exposed.json",
+      "sha256": "f5617898911dc52c76ebd3119263994983456f50f2187ccc7e0da480c706f7ee"
+    },
+    {
+      "file": "plugins/spring-cve-2022-22965-spring4shell-5.2.json",
+      "sha256": "d7c5ff4a549026d966d8569c96761a70a669e3ca46efe56d4b6b975c7f3e45e9"
+    },
+    {
+      "file": "plugins/spring-cve-2022-22965-spring4shell-5.3.json",
+      "sha256": "a67d1e41c763788c9aeaa818263971b5544d7566af5b6a75f0528b445817006b"
+    },
+    {
+      "file": "plugins/struts-cve-2017-5638-2.3.json",
+      "sha256": "b27f2e52f08a125a541578346f370833437cea2e9b447d2daa5b133d72d8f32c"
+    },
+    {
+      "file": "plugins/struts-cve-2017-5638-2.5.json",
+      "sha256": "c2db521907a0138c4abbb2b269d8129e8e3151ef61b6f09a55e2eb2a88568280"
+    },
+    {
+      "file": "plugins/tomcat-cve-2020-1938-ghostcat-7.json",
+      "sha256": "399cb0d4ff4e19ba1034bb16fc26b42a33189672294893d1bbc8067e4d284370"
+    },
+    {
+      "file": "plugins/tomcat-cve-2020-1938-ghostcat-8.5.json",
+      "sha256": "64e7d7f7065e37670e72b6e996aa4b81e684b108a1c98a3bcee62e012e0c8191"
+    },
+    {
+      "file": "plugins/tomcat-cve-2020-1938-ghostcat-9.json",
+      "sha256": "68ee3b1ba1e38ddd883d6d44b21fde239ff87f4a526494a34452f24fbbe2cb62"
+    },
+    {
+      "file": "plugins/vsftpd-234-backdoor.json",
+      "sha256": "1871505ec671588af9c049c52bab92bb53ccdf95c06acac71d9c346af7a37098"
+    },
+    {
+      "file": "plugins/webmin-cve-2019-15107-backdoor.json",
+      "sha256": "52c2566e8b0b1430b737d75e35fac4e0ea705f3404bfcf2b5542aeec0b5605ed"
+    }
+  ]
+}

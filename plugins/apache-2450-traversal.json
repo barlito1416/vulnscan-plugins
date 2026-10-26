@@ -1,0 +1,16 @@
+{
+  "id": "apache-cve-2021-42013",
+  "name": "Apache HTTP Server 2.4.50 - Path Traversal and RCE (incomplete fix)",
+  "severity": "CRITICAL",
+  "cve": ["CVE-2021-42013"],
+  "references": [
+    "https://httpd.apache.org/security/vulnerabilities_24.html",
+    "https://nvd.nist.gov/vuln/detail/CVE-2021-42013"
+  ],
+  "description": "The fix for CVE-2021-41773 in Apache HTTP Server 2.4.50 was insufficient. An attacker can still use a path traversal attack to map URLs to files outside the document root, and achieve RCE where CGI is enabled.",
+  "remediation": "Upgrade to Apache HTTP Server 2.4.51 or later.",
+  "match": {
+    "product_regex": "apache",
+    "version": {"eq": "2.4.50"}
+  }
+}

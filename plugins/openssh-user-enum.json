@@ -1,0 +1,16 @@
+{
+  "id": "openssh-cve-2018-15473",
+  "name": "OpenSSH < 7.7 - Username Enumeration",
+  "severity": "MEDIUM",
+  "cve": ["CVE-2018-15473"],
+  "references": [
+    "https://nvd.nist.gov/vuln/detail/CVE-2018-15473"
+  ],
+  "description": "OpenSSH before 7.7 is prone to a user enumeration vulnerability: it responds differently to authentication attempts for valid vs. invalid usernames, letting an attacker enumerate accounts.",
+  "remediation": "Upgrade OpenSSH to 7.7 or later.",
+  "match": {
+    "service": "ssh",
+    "product_regex": "openssh",
+    "version": {"lt": "7.7"}
+  }
+}
