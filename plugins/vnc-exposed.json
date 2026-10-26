@@ -1,0 +1,12 @@
+{
+  "id": "vnc-exposed",
+  "name": "VNC Server Exposed on the Network",
+  "severity": "MEDIUM",
+  "cve": [],
+  "references": [],
+  "description": "A VNC server is reachable over the network. VNC auth is often weak or absent and transmits screen contents; exposure allows remote control of the desktop if credentials are guessed or missing.",
+  "remediation": "Restrict VNC to a VPN/localhost, require a strong password, prefer an SSH tunnel, and firewall ports 5900+.",
+  "match": {
+    "product_regex": "vnc"
+  }
+}

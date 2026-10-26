@@ -1,0 +1,15 @@
+{
+  "id": "elasticsearch-exposed",
+  "name": "Elasticsearch Exposed Without Authentication",
+  "severity": "MEDIUM",
+  "cve": [],
+  "references": [
+    "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-minimal-setup.html"
+  ],
+  "description": "An Elasticsearch node is reachable and answered an unauthenticated request. Without security features enabled, all indices can be read and modified by anyone who can reach port 9200.",
+  "remediation": "Enable the Elastic security features (authentication/TLS), bind to a private interface, and firewall the HTTP port.",
+  "match": {
+    "product_regex": "elasticsearch",
+    "banner_regex": "cluster_name|You Know, for Search"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mongodb-exposed-http",
+  "name": "MongoDB Exposed on the Network",
+  "severity": "MEDIUM",
+  "cve": [],
+  "references": [
+    "https://www.mongodb.com/docs/manual/administration/security-checklist/"
+  ],
+  "description": "A MongoDB instance is reachable over the network. Older/default configurations have no authentication, letting anyone who can reach the port read and modify all databases.",
+  "remediation": "Bind MongoDB to localhost/a private interface, enable authentication (authorization: enabled), and firewall port 27017.",
+  "match": {
+    "product_regex": "mongodb"
+  }
+}
