@@ -1,0 +1,70 @@
+name: Refresh plugins from NVD
+
+# Regenerates the NVD-sourced plugins and the HTTP manifest on a schedule, so
+# the catalog stays current as new CVEs are published. Runs server-side and
+# commits the result back to this repo.
+
+on:
+  schedule:
+    # Every Monday at 06:00 UTC.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      min_severity:
+        description: "Minimum severity"
+        type: choice
+        default: HIGH
+        options: [LOW, MEDIUM, HIGH, CRITICAL]
+      max_per_product:
+        description: "Max plugins per product"
+        default: "150"
+      since:
+        description: "Only CVEs published in/after this year"
+        default: "2010"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-plugins
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate plugins from NVD
+        env:
+          # Add an NVD API key as a repo secret (NVD_API_KEY) to speed this up.
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+          MIN_SEVERITY: ${{ github.event.inputs.min_severity || 'HIGH' }}
+          MAX_PER_PRODUCT: ${{ github.event.inputs.max_per_product || '150' }}
+          SINCE: ${{ github.event.inputs.since || '2010' }}
+        run: |
+          rm -rf plugins/nvd
+          mkdir -p plugins/nvd
+          python3 tools/gen_from_nvd.py \
+            --out plugins/nvd \
+            --min-severity "$MIN_SEVERITY" \
+            --max-per-product "$MAX_PER_PRODUCT" \
+            --since "$SINCE"
+          python3 tools/gen_manifest.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No plugin changes this run."
+          else
+            n=$(git diff --cached --numstat | wc -l | tr -d ' ')
+            git commit -m "chore: scheduled NVD plugin refresh ($(date -u +%Y-%m-%d)) — ${n} file(s) changed"
+            git push
+          fi
