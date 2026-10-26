@@ -188,6 +188,8 @@ def main(argv=None) -> int:
     ap.add_argument("--min-severity", default="HIGH",
                     choices=["LOW", "MEDIUM", "HIGH", "CRITICAL"])
     ap.add_argument("--max-per-product", type=int, default=80)
+    ap.add_argument("--since", type=int, metavar="YEAR",
+                    help="only CVEs published in/after this year")
     ap.add_argument("--products", help="comma list of ids (default: all)")
     ap.add_argument("--kev-only", action="store_true",
                     help="only emit CVEs that are in the CISA KEV catalog")
@@ -216,6 +218,8 @@ def main(argv=None) -> int:
             for cve in fetch_cves(vp, args.api_key):
                 cve_id = cve.get("id", "")
                 if not cve_id or (kev and cve_id not in kev):
+                    continue
+                if args.since and (cve.get("published", "0000")[:4] or "0") < str(args.since):
                     continue
                 score, sev = best_cvss(cve.get("metrics", {}))
                 if SEV_RANK.get(sev, 0) < floor:
