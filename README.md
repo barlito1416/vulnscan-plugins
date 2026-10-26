@@ -71,6 +71,23 @@ skipped (they would match every version). Add a product by adding its
 `vendor:product` to the `PRODUCTS` map in the tool and a fingerprint for it in
 vulnscan.
 
+## Scheduled refresh (keeps the catalog current)
+A GitHub Actions workflow ([`.github/workflows/refresh.yml`](.github/workflows/refresh.yml))
+regenerates the NVD plugins + manifest **every Monday at 06:00 UTC** and commits
+any changes back to this repo — so `vulnscan plugins sync` always pulls fresh
+data. You can also run it on demand from the repo's **Actions** tab
+("Refresh plugins from NVD" → *Run workflow*), optionally overriding severity /
+cap / since-year.
+
+**Faster, friendlier runs:** add your NVD API key as a repo secret named
+`NVD_API_KEY` (Settings → Secrets and variables → Actions). Without it the run
+still works, just slower (NVD's keyless rate limit).
+
+Prefer a local schedule instead? A cron entry works too:
+```cron
+0 6 * * 1  cd /path/to/vulnscan-plugins && python3 tools/gen_from_nvd.py --out plugins/nvd --since 2010 && python3 tools/gen_manifest.py && git commit -am refresh && git push
+```
+
 ## Scope
 These are **detection** rules for known, versioned vulnerabilities — a
 prioritized worklist, not proof. Verify findings before acting, and only scan
